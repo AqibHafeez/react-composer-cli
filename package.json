@@ -1,6 +1,6 @@
 {
   "name": "react-composer-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Package to generate react component on the go",
   "main": "cli.js",
   "scripts": {
@@ -9,7 +9,11 @@
   "bin": {
     "react-composer-cli": "./index.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AqibHafeez/react-composer-cli"
+  },
+  "keywords": ["react", "cli"],
   "author": "Aqib Hafeez",
   "license": "ISC",
   "dependencies": {

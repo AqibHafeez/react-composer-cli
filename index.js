@@ -7,14 +7,15 @@ const generateFunctionalComponent = require('./templates/functional-component');
 const generateClassComponent = require('./templates/class-component');
 
 program
-  .version('0.1.0')
-  .description('React Composer');
+  .version('0.0.3')
+  .description('React Composer CLI');
 
 program
   .command('generate <componentName>')
   .description('Generate a new React component')
   .option('--functional', 'Generate a functional component')
   .option('--class', 'Generate a class component')
+  .option('--style', 'Generate separate SCSS files')
   .action((componentName, options) => {
     generateComponent(componentName, options);
   });
@@ -24,13 +25,17 @@ program.parse(process.argv);
 async function generateComponent(componentName, options) {
   try {
     const componentType = options.class ? 'class' : 'functional';
-    const componentContent = componentType === 'class'
+    let componentContent = componentType === 'class'
       ? generateClassComponent(componentName)
       : generateFunctionalComponent(componentName);
 
     const componentFileName = `${componentName}.js`;
     const componentPath = path.join(process.cwd(), componentFileName);
-
+    if (options.style) {
+      componentContent = `import './${componentName}.scss';\n` + componentContent;
+      let styleFilePath = path.join(process.cwd(), `${componentName}.scss`);
+      await fs.outputFile(styleFilePath, `/* Your styles for ${componentName} component here */`);
+    }
     await fs.outputFile(componentPath, componentContent);
     console.log(`Component "${componentName}" generated successfully.`);
   } catch (error) {
