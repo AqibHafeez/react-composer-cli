@@ -28,6 +28,10 @@ Generate Class-Based Component
 ```sh
 react-composer-cli generate {{YOUR COMPONENT NAME}} --class
 ```
+Generate Component with styling
+```sh
+react-composer-cli generate {{YOUR COMPONENT NAME}} --functional --style
+```
 
 
 ## What's incoming next?
