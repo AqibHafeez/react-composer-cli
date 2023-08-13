@@ -1,6 +1,6 @@
 {
   "name": "react-composer-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Package to generate react component on the go",
   "main": "cli.js",
   "scripts": {
