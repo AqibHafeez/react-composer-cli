@@ -1,11 +1,15 @@
+const generateFunctionalComponent = (componentName) => `
 import React from 'react';
 
-const FunctionalComponent = () => {
+const ${componentName} = () => {
   return (
     <>
-      <span>Hello World from functional component</span>
+      <span>Functional Component Works</span>
     </>
   );
 };
 
-export default FunctionalComponent;
+export default ${componentName};
+`;
+
+module.exports = generateFunctionalComponent;

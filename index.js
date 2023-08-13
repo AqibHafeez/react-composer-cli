@@ -3,6 +3,8 @@ const fs = require('fs-extra');
 const path = require('path');
 const { program } = require('commander');
 const TEMPLATE_DIR = path.join(__dirname, 'templates');
+const generateFunctionalComponent = require('./templates/functional-component');
+const generateClassComponent = require('./templates/class-component');
 
 program
   .version('0.1.0')
@@ -22,10 +24,13 @@ program.parse(process.argv);
 async function generateComponent(componentName, options) {
   try {
     const componentType = options.class ? 'class' : 'functional';
-    const componentTemplatePath = path.join(TEMPLATE_DIR, `${componentType}-component.js`);
-    const componentContent = await fs.readFile(componentTemplatePath, 'utf-8');
+    const componentContent = componentType === 'class'
+      ? generateClassComponent(componentName)
+      : generateFunctionalComponent(componentName);
+
     const componentFileName = `${componentName}.js`;
     const componentPath = path.join(process.cwd(), componentFileName);
+
     await fs.outputFile(componentPath, componentContent);
     console.log(`Component "${componentName}" generated successfully.`);
   } catch (error) {
