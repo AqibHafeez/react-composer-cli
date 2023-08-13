@@ -1,13 +1,17 @@
+const generateClassComponent = (componentName) => `
 import React, { Component } from 'react';
 
-class ClassComponent extends Component {
+class ${componentName} extends Component {
   render() {
     return (
       <>
-        <span>Hello World from class based component</span>
+        <span>Class Component Works</span>
       </>
     );
   }
 }
 
-export default ClassComponent;
+export default ${componentName};
+`;
+
+module.exports = generateClassComponent;
