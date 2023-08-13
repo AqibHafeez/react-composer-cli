@@ -15,7 +15,20 @@ As a React developer, you might have noticed the lack of a built-in CLI for gene
 
 ## Installation and Usage
 
-Coming soon.
+Install the package
+
+```sh
+npm install -g react-composer-cli
+```
+Generate Functional Component
+```sh
+react-composer-cli generate {{YOUR COMPONENT NAME}} --functional
+```
+Generate Class-Based Component
+```sh
+react-composer-cli generate {{YOUR COMPONENT NAME}} --class
+```
+
 
 ## What's incoming next?
 Stay tuned for exciting updates and new features!
