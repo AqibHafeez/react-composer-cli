@@ -6,7 +6,7 @@ const TEMPLATE_DIR = path.join(__dirname, 'templates');
 
 program
   .version('0.1.0')
-  .description('React Component Generator');
+  .description('React Composer');
 
 program
   .command('generate <componentName>')
