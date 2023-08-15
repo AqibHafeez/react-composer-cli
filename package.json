@@ -1,6 +1,6 @@
 {
   "name": "react-composer-cli",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "Package to generate react component on the go",
   "main": "index.js",
   "scripts": {
@@ -33,6 +33,7 @@
   "dependencies": {
     "commander": "^11.0.0",
     "fs-extra": "^11.1.1",
+    "inquirer": "^8.2.6",
     "path": "^0.12.7"
   }
 }
