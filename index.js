@@ -2,42 +2,49 @@
 const fs = require('fs-extra');
 const path = require('path');
 const { program } = require('commander');
+const inquirer = require('inquirer');
 const TEMPLATE_DIR = path.join(__dirname, 'templates');
 const generateFunctionalComponent = require('./templates/functional-component');
 const generateClassComponent = require('./templates/class-component');
+const promptOptions = require('./Configs/promptOptions');
+const Helper = require('./Utils/helper');
 
 program
-  .version('0.0.3')
+  .version('1.0.0')
   .description('React Composer CLI');
 
 program
-  .command('generate <componentName>')
+  .command('generate')
   .description('Generate a new React component')
-  .option('--functional', 'Generate a functional component')
-  .option('--class', 'Generate a class component')
-  .option('--style', 'Generate separate SCSS files')
-  .action((componentName, options) => {
-    generateComponent(componentName, options);
+  .action(() => {
+    generateComponent();
   });
 
 program.parse(process.argv);
 
-async function generateComponent(componentName, options) {
+async function generateComponent() {
   try {
-    const componentType = options.class ? 'class' : 'functional';
-    let componentContent = componentType === 'class'
-      ? generateClassComponent(componentName)
-      : generateFunctionalComponent(componentName);
+    let response = await inquirer.prompt(promptOptions);
+    response.componentName = Helper.capitalizeFirstLetter(response.componentName);
+    // Create a directory with the component name
+    const componentDirectory = path.join(process.cwd(), response.componentName);
+    await fs.ensureDir(componentDirectory);
 
-    const componentFileName = `${componentName}.js`;
-    const componentPath = path.join(process.cwd(), componentFileName);
-    if (options.style) {
-      componentContent = `import './${componentName}.scss';\n` + componentContent;
-      let styleFilePath = path.join(process.cwd(), `${componentName}.scss`);
-      await fs.outputFile(styleFilePath, `/* Your styles for ${componentName} component here */`);
-    }
+    let componentContent = response.componentType === 'Class'
+      ? generateClassComponent(response.componentName)
+      : generateFunctionalComponent(response.componentName);
+
+    const componentFileName = `${response.componentName}.${response.componentLanguage}`;
+    const componentPath = path.join(componentDirectory, componentFileName);
+
+    componentContent = `import './${response.componentStyle}';\n` + componentContent;
+
+    const styleFileName = `${response.componentName}.${response.componentStyle}`;
+    const styleFilePath = path.join(componentDirectory, styleFileName);
+    await fs.outputFile(styleFilePath, `/* Your styles for ${response.componentName} component here */`);
+
     await fs.outputFile(componentPath, componentContent);
-    console.log(`Component "${componentName}" generated successfully.`);
+    console.log(`Component "${response.componentName}" generated successfully in "${componentDirectory}" folder.`);
   } catch (error) {
     console.error('Error generating component:', error);
   }
