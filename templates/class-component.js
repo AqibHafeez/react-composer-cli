@@ -5,7 +5,7 @@ class ${componentName} extends Component {
   render() {
     return (
       <>
-        <span>Class Component Works</span>
+        <span> ${componentName} Works</span>
       </>
     );
   }
