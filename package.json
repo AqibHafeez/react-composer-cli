@@ -1,6 +1,6 @@
 {
   "name": "react-composer-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Package to generate react component on the go",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,8 @@
   "keywords": [
     "react",
     "cli",
-    "javascript"
+    "javascript",
+    "build-tools"
   ],
   "author": "Aqib Hafeez <aqibhafeez47@gmail.com>",
   "contributors": [
