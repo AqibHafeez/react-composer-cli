@@ -1,6 +1,6 @@
 # 🚀 🚀  React Composer CLI 🚀 🚀 
 
-Create React components effortlessly with React Composer CLI! This open-source package offers a command-line interface (CLI) for generating React components, making it easier and faster to kickstart your React projects. While it's the initial release and there is a lot more coming to enhance your component generator, such as different component templates, tests, State and Props support and more. This tool is designed to simplify component creation and boost your productivity as you contribute to the React community.
+Create React components effortlessly with React Composer CLI! This open-source package offers a command-line interface (CLI) for generating React components, making it easier and faster to kickstart your React projects. While it's the initial release and there is a lot more coming to enhance your component generator, such as different component templates, tests, State and Props support and more. This tool is designed to simplify component creation and boost your productivity.
 
 
 # Why React Composer CLI?
@@ -14,11 +14,6 @@ As a React developer, you might have noticed the lack of a built-in CLI for gene
 * A perfect companion for your React projects.
 
 
-
- ## **Exciting News:** 
-
-React Composer CLI has just been updated to version 1.0.0! This update brings along some major changes that enhance your component generation experience. Please use latest version or update to 1.0.0.
-Review the changelog to understand the new features and enhancements.
 
 ## Installation and Usage
 
@@ -44,10 +39,11 @@ npx react-composer-cli generate
 - **Component Styling:** Decide on the styling approach for your component (CSS or SCSS).
 
 # Changelog
+## [1.0.1] - 2023-08-25
+- **Lifecycle Methods for Class Components:** Now you can take advantage of the power of class components with added lifecycle methods. This allows you to efficiently manage component initialization, updates, and cleanup.
+- **Hooks for Functional Components:** Embrace the modern approach to React development by utilizing Hooks in functional components. Enjoy streamlined state management and effects without the need for class structures.
 
 ## [1.0.0] - 2023-08-15
-
-### Major Updates
 
 - **Interactive Mode:** React Composer CLI now supports an interactive mode that makes component generation even more user-friendly and intuitive. Instead of typing commands, you can simply run the utility and interactively provide input for component generation.
 
@@ -69,7 +65,7 @@ npx react-composer-cli generate
 
 ## What's incoming next?
 
-* State and Props support
+* Improved State and Props support
 * Customs Paths
 * Tests
 * Much More
